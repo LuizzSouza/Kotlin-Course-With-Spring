@@ -36,7 +36,7 @@ class BookController(
     }
 
     @GetMapping
-    fun findAll(@PageableDefault(page = 0, size = 10) pageable: Pageable): Page<BookResponse> {
+    fun findAll(@PageableDefault(page = 0, size = 10) @  pageable: Pageable): Page<BookResponse> {
         return bookService.findAll(pageable).map { it.toResponse() }
     }
 
