@@ -1,5 +1,8 @@
 package com.mercadolivro.model
 
+import com.mercadolivro.enums.BookStatus
+import com.mercadolivro.enums.Errors
+import com.mercadolivro.exception.BadRequestException
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.Column
@@ -22,25 +25,22 @@ data class PurchaseModel(
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    val customer: CustomerModel,
+    var customer: CustomerModel,
 
     @ManyToMany
     @JoinTable(name = "purchase_book",
         joinColumns = [JoinColumn(name = "purchase_id")],
         inverseJoinColumns = [JoinColumn(name = "book_id")])
-    val books: MutableList<BookModel>,
+    var books: MutableList<BookModel>,
 
     @Column
-    val nfe: String? = null,
+    var nfe: String? = null,
 
     @Column
-    val price: BigDecimal,
+    var price: BigDecimal,
 
     @Column(name = "created_at")
-    val createdAt: LocalDateTime = LocalDateTime.now()
-
-
-
+    var createdAt: LocalDateTime = LocalDateTime.now()
 
 
 )

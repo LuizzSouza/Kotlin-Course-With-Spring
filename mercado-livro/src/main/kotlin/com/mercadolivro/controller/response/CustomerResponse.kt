@@ -10,5 +10,4 @@ data class CustomerResponse (
     var email: String,
 
     var status: CustomerStatus
-
 )
