@@ -16,3 +16,6 @@ springdoc:
     operations-sorter: method
     url: /mercado-livro-api-docs
     disable-swagger-default-url: true
+jwt:
+  secret: 474f044c-3d91-4187-82d4-4de8b6d371b1
+  expiration: 999999
