@@ -53,4 +53,8 @@ class CustomerService(
        return !customerRepository.existsByEmail(email)
     }
 
+    fun findIdByEmail(email: String): Int {
+        return customerRepository.findByEmail(email)?.id ?: throw NotFoundException(Errors.ML201.message.format(email), Errors.ML201.code)
+    }
+
 }

@@ -10,6 +10,7 @@ import com.mercadolivro.service.UserDetailsCustomService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
+import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -32,9 +33,18 @@ class SecurityConfig(
     private val customEntryPoint: CustomAuthenticationEntryPoint
 ) : WebSecurityConfigurerAdapter() {
 
-    private val PUBLIC_MATCHERS = arrayOf<String>()
+    @Bean
+    @Override
+    override fun authenticationManager(): AuthenticationManager {
+        return super.authenticationManager()
+    }
+
+    private val PUBLIC_MATCHERS = arrayOf<String>(
+            "/auth/**"
+    )
 
     private val PUBLIC_POST_MATCHERS = arrayOf(
+        "/auth",
         "/customer"
     )
 
