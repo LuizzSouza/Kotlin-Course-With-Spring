@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("auth")
 @Tag(name = "1 - Authentication", description = "Authentication API")
 class LoginController(
-        val authenticationManager: AuthenticationManager,
-        val jwtUtil: JwtUtil,
-        val customerService: CustomerService
+    private val authenticationManager: AuthenticationManager,
+    private val jwtUtil: JwtUtil,
+    private val customerService: CustomerService
 ) {
 
     @PostMapping("/login")
